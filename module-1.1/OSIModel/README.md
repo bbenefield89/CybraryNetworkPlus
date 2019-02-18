@@ -27,7 +27,7 @@ Mnemonic to easily remember the seven layers of the OSI Model.
 ## Layer 1 - Physical
 The physical layer is where we start to convert our data into signals or vice versa
 
-- Cables/Bits
+- Cables
 - Physical/Electrical
 - Pinouts
 - Voltages
@@ -40,32 +40,18 @@ The Data Link layer is where we gain access to our device(s) such as computers, 
 
 The Data Link layer also deals with our devices Media Access Control (MAC) address which is hardcoded into our devices NIC that gives each device its own unique address. NIC manufacturers are given a certain range of numbers to use in order to keep each MAC address unique to each NIC. Hypothetically, if we had two devices with the same MAC address we would potentially have connectivity issues with these devices.
 
-### TLDR
-Ships data from point A to point B.
-
-- Gives access to device
-- Packages data from Phsycial layer into bits and frames
-- Transfers data as bits/frames from one point to another
-- Media Access Control Address (MAC)
-- Hubs/Switches
+- Gives access to physical device
+- Converts data being sent out into frames
+- Converts frames being received into raw data
+- Media Access Control (MAC)
+- Switches/Hubs
 
 ## Layer 3 - Network (IP Layer)
-This layer allows us to take our data and send over different networks depending the IP address, "Logical Address", that is mapped to a MAC address, "Physical Address". All devices with a NIC have a MAC and IP address.
-
-### Example
-This example skips over Layers 4 - 7 and this is not meant to be a complete example of how data is transferred.
-
-**Computer A** needs to send data to **Computer B**. **Computer A** will then transform that data into electrical impulses. These impulses will then be sent out from our NIC over a cable. So far this is still the Physical layer.
-
-Because in this example we are on two different networks we are not able to send this data directly using the MAC addresses via Layer 2. So now this layer will convert that data in bits and frames and send these bits and frames to Layer 3.
-
-Our third layer will begin to assign IP addresses, which are mapped to a computers specific MAC address, to the bits and frames being sent from Layer 2 and package them up, aka Packets. After creating these packets we will now send these packets to **Computer A**'s router which will then point to **Computer B**'s router which will then send the packet to the computer with the IP address that is mapped to their MAC address.
-
-Now that the data has successfully been transfered from Layer 1 -> Layer 2 -> Layer 3, the data is now sitting on **Computer B**'s NIC and we find ourself back on Layer 2 where the data is now converted from bits and frames back into data on **Computer B**'s Layer 1
+This layer allows us to take our data and send it over different networks depending the IP address, "Logical Address", that is mapped to a MAC address, "Physical Address".
 
 - Referred to as IP Layer
 - Transfers data from one-one or one-many networks
-- Converts IP address, "Logical", to MAC address, "Physical"
+- Converts IP address, "Logical", to MAC address, "Physical", and vice versa
 - Performs network routing functions, fragmentation, and reassembly
 - Routers
 
@@ -86,14 +72,13 @@ UDP is much faster and instead of taking time to manage the packets sent, UDP wi
   - User Datagram Protocol (UDP): Not Verified
 
 ## Layer 5 - Session
-The Session layer is where we establish, manage, and terminate connections between devices. Think of this layer as the "Shipping Manager" on an assembly line. The shipping manager lets us know when to ship, how much to ship, and where to ship it.
+The Session layer is where we establish, manage, and terminate connections between devices.
 
 - Traffic Control
 - Controls connections between devices
   - Establish Connections
   - Manage Connections
   - Terminate Connections
-- Regulates when and how much data can be sent at a time
 
 ## Layer 6 - Presentation
 Takes our packages and transform them in a way that our **Layer 7 Application** layer can read and display the data for humans.
@@ -110,19 +95,29 @@ The Application layer decides whether or not our applications are able to access
 - Determines resources availability
 - Synchronize communication
 - Determines protcol we can receive data from
+- Displays data to user
 
 ## Summary of Layers
-- Layer 1
-  - Established a physical connection
-- Layer 2
-  - Established a data link connection
-- Layer 3
-  - Received an IP address and send data over the network using routers, etc.
-- Layer 4
-  - Established protocol to send data over, TCP or UDP
-- Layer 5
-  - Establish connections between multiple devices, lets us know when and where to send data
-- Layer 6
-  - Encrypt/Decrypt data
-- Layer 7
-  - Displays data
+- Layer 1 - Physical
+  - Established a physical connection. If you can touch it this is Layer 1.
+
+- Layer 2 - Data Link
+  - Established a data link connection. Handles MAC address of device to make sure packets are being sent/received appropriately.
+
+- Layer 3 - Network
+  - Packages are given an IP address where they should be sent to.
+
+- Layer 4 - Transport
+  - Established protocol to send data over, TCP or UDP.
+
+- Layer 5 - Sessions
+  - Establish connections between multiple devices, how long to wait for a response, when to terminate connection.
+
+- Layer 6 - Presentation
+  - Encrypt outgoing data; Decrypt incoming data.
+
+- Layer 7 - Application
+  - Displays data (what the user can view).
+
+## All Layer Explanation Examples
+Here is a [post on r/computing](https://www.reddit.com/r/computing/comments/1o5cmp/eli5_osi_layer_model/) detailing the OSI Model in a simple way. There are multiple responses as well that give a different kind of explanation so if one doesn't make sense then read the next one.
